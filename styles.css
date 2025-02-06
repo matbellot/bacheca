@@ -1,0 +1,440 @@
+.app {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f9f9f9;
+    min-height: 100vh;
+}
+
+h1 {
+    text-align: center;
+    background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    text-fill-color: transparent;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    margin-bottom: 2.5rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.user-filter {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.user-filter select {
+    min-width: 200px;
+    font-size: 1rem;
+}
+
+.kanban-board {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+    padding: 1rem;
+}
+
+.column {
+    background: linear-gradient(145deg, #ffffff, #f8f9fa);
+    border-radius: 20px;
+    padding: 1.5rem;
+    min-height: 500px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    position: relative;
+}
+
+.column h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin: 0.5rem 0 3rem 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding-right: 100px;
+}
+
+.add-task {
+    width: auto;
+    margin-bottom: 1.5rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+    font-weight: 300;
+    opacity: 0.7;
+    position: absolute;
+    right: 1.5rem;
+    top: 1.5rem;
+    color: #718096;
+}
+
+.add-task:hover {
+    opacity: 1;
+}
+
+.task {
+    background: #fff9c4;
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    cursor: move;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.task:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    background: #fff7b0;
+}
+
+.task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.task-content {
+    flex: 1;
+    margin-right: 1rem;
+}
+
+.task-title {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #718096;
+    margin-bottom: 0.5rem;
+}
+
+.task-title[contenteditable="true"]:empty::before,
+.task-title[contenteditable="true"]:focus:empty::before {
+    content: 'Nuovo';
+    color: #718096;
+    font-size: 0.9rem;
+    font-weight: 400;
+    opacity: 0.7;
+}
+
+.task-description {
+    color: #2c3e50;
+    font-size: 1.4rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    min-height: 2em;
+}
+
+.task-description[contenteditable="true"]:empty::before,
+.task-description[contenteditable="true"]:focus:empty::before {
+    content: 'inserisci qui';
+    opacity: 0.4;
+    font-weight: 400;
+}
+
+.task-controls {
+    display: flex;
+    gap: 0.8rem;
+    align-items: flex-start;
+}
+
+.button {
+    background: none;
+    color: #718096;
+    border: 1px solid #e2e8f0;
+    border-radius: 15px;
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 400;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+.button:hover {
+    background: #f7fafc;
+    color: #4a5568;
+}
+
+.button.edit {
+    color: #4299e1;
+    border-color: #bee3f8;
+}
+
+.button.edit:hover {
+    background: #ebf8ff;
+    color: #2b6cb0;
+}
+
+.button.delete {
+    color: #FC8181;
+    border-color: #FED7D7;
+}
+
+.button.delete:hover {
+    background: #FFF5F5;
+    color: #E53E3E;
+}
+
+.user-select, #userFilter {
+    min-width: 100px;
+    text-align: center;
+    background: #f7fafc;
+    border: 1px solid #e2e8f0;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    padding: 0.4rem;
+}
+
+.comments {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #f0f0f0;
+}
+
+.comment {
+    background: #f8fafc;
+    padding: 1rem;
+    margin: 0.8rem 0;
+    border-radius: 8px;
+    border-left: 3px solid #cbd5e0;
+    font-size: 1rem;
+    color: #4a5568;
+}
+
+.task-actions {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #f0f0f0;
+}
+
+.add-comment {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.add-comment input {
+    flex: 1;
+    padding: 0.6rem 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    background: #f8fafc;
+}
+
+.add-comment button {
+    flex-shrink: 0;
+}
+
+.delete-task {
+    background: none;
+    color: #FC8181;
+    border: 1px solid #FED7D7;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+    opacity: 0.6;
+    margin-left: auto;
+}
+
+.delete-task:hover {
+    background: #FFF5F5;
+    color: #E53E3E;
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    /* Layout generale */
+    .kanban-board {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0.5rem;
+    }
+
+    .column {
+        padding: 1rem;
+    }
+
+    /* Stile dei task */
+    .task {
+        background: #fffde7;  /* Giallo più chiaro */
+        padding: 1.2rem;
+    }
+
+    .task:hover {
+        background: #fff9c4;
+    }
+
+    .task-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .task-content {
+        margin-bottom: 1.5rem;
+    }
+
+    /* Controlli mobile */
+    .task-mobile-controls {
+        display: flex;
+        flex-direction: column;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .move-to {
+        width: 100%;
+        padding: 0.8rem;
+        font-size: 0.9rem;
+        background: #4299e1;  /* Blu per il pulsante sposta */
+        color: white;
+        font-weight: 500;
+        border: none;
+        border-radius: 8px;
+    }
+
+    .move-to:hover {
+        background: #3182ce;  /* Blu più scuro all'hover */
+    }
+
+    /* Pulsanti e controlli */
+    .button.delete {
+        width: 100%;
+        background: #fc8181;
+        color: white;
+        border: none;
+        opacity: 1;
+        text-align: center;
+        margin-left: 0;
+    }
+
+    .button.delete:hover {
+        background: #f56565;
+    }
+
+    .user-select {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    /* Titoli e testo */
+    .task-title[contenteditable="true"]:empty::before {
+        font-size: 0.8rem;
+        opacity: 0.5;
+    }
+
+    .add-task {
+        position: static;
+        float: none;
+        display: block;
+        margin: 1rem auto;
+        text-align: center;
+    }
+
+    .column h2 {
+        padding-right: 0;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Rimuovi effetti desktop */
+    .task[draggable] {
+        cursor: default;
+    }
+}
+
+.task.dragging {
+    opacity: 0.7;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+    background: #fff7b0;
+}
+
+.tasks-container {
+    min-height: 200px;
+    transition: background-color 0.2s;
+    padding: 0.5rem;
+    border-radius: 10px;
+}
+
+.tasks-container:empty {
+    background-color: rgba(0,0,0,0.02);
+}
+
+/* Stile per il sottotitolo */
+.subtitle {
+    text-align: center;
+    color: #718096;
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-top: -1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Stili per le opzioni di Matteo */
+.user-select option[value="Matteo"],
+#userFilter option[value="Matteo"] {
+    background-color: #E6F3FF !important;  /* Azzurro molto chiaro per Matteo */
+    color: #2C5282 !important;
+}
+
+/* Stili per le opzioni di Marta */
+.user-select option[value="Marta"],
+#userFilter option[value="Marta"] {
+    background-color: #FFF0F7 !important;  /* Rosa molto chiaro per Marta */
+    color: #702459 !important;
+}
+
+/* Stile per l'opzione "Tutti gli utenti" */
+#userFilter option[value="all"] {
+    background-color: #f7fafc;
+    color: #4a5568;
+}
+
+/* Stili per il select quando è selezionato Matteo */
+.user-select:has(option[value="Matteo"]:checked) {
+    background-color: #E6F3FF;
+    color: #2C5282;
+}
+
+/* Stili per il select quando è selezionato Marta */
+.user-select:has(option[value="Marta"]:checked) {
+    background-color: #FFF0F7;
+    color: #702459;
+}
+
+.task-mobile-controls {
+    display: none;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+    .task-mobile-controls {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .task[draggable] {
+        cursor: default;
+    }
+
+    .move-to {
+        width: 100%;
+        padding: 0.8rem;
+        font-size: 0.9rem;
+        background: #f8f9fa;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        color: #4a5568;
+    }
+
+    .move-to:hover {
+        background: #edf2f7;
+    }
+} 
