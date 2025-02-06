@@ -10,8 +10,12 @@
 h1 {
     text-align: center;
     background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+    background-clip: text;
     -webkit-background-clip: text;
+    -moz-background-clip: text;
+    text-fill-color: transparent;
     -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
     margin-bottom: 2.5rem;
     font-size: 2.5rem;
     font-weight: 700;
@@ -359,4 +363,35 @@ h1 {
 .user-select:has(option[value="Marta"]:checked) {
     background-color: #FFF0F7;
     color: #702459;
+}
+
+.task-mobile-controls {
+    display: none;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+    .task-mobile-controls {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .task[draggable] {
+        cursor: default;
+    }
+
+    .move-to {
+        width: 100%;
+        padding: 0.8rem;
+        font-size: 0.9rem;
+        background: #f8f9fa;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        color: #4a5568;
+    }
+
+    .move-to:hover {
+        background: #edf2f7;
+    }
 } 
