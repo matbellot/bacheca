@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Chiedi password all'avvio
     const password = prompt('Inserisci la password:');
-    if (password !== 'password-segreta') {
+    if (password !== 'marmat') {
         document.body.innerHTML = '<h1>Accesso negato</h1>';
         return;
     }
