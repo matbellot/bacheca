@@ -1,4 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Chiedi password all'avvio
+    const password = prompt('Inserisci la password:');
+    if (password !== 'password-segreta') {
+        document.body.innerHTML = '<h1>Accesso negato</h1>';
+        return;
+    }
+    
     const db = firebase.database();
     const tasksRef = db.ref('tasks');
     let tasks = [];
@@ -56,10 +63,19 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="task-content">
                             <div class="task-title" contenteditable="true">${task.title}</div>
                             <div class="task-description" contenteditable="true">${task.description}</div>
-                            <select class="user-select button">
-                                <option value="Matteo" ${task.assignedTo === 'Matteo' ? 'selected' : ''}>Matteo</option>
-                                <option value="Marta" ${task.assignedTo === 'Marta' ? 'selected' : ''}>Marta</option>
-                            </select>
+                            ${columnStatus !== 'Done' ? `
+                                <select class="user-select button">
+                                    <option value="Matteo" ${task.assignedTo === 'Matteo' ? 'selected' : ''}>Matteo</option>
+                                    <option value="Marta" ${task.assignedTo === 'Marta' ? 'selected' : ''}>Marta</option>
+                                </select>
+                                <div class="task-mobile-controls">
+                                    ${columnStatus === 'To Do' ? `
+                                        <button class="button move-to" data-move-to="Doing">Sposta in Doing</button>
+                                    ` : columnStatus === 'Doing' ? `
+                                        <button class="button move-to" data-move-to="Done">Sposta in Done</button>
+                                    ` : ''}
+                                </div>
+                            ` : ''}
                         </div>
                         <div class="task-controls">
                             <button class="button delete">Elimina Task</button>
@@ -119,6 +135,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target.classList.contains('delete')) {
             const taskId = parseInt(e.target.closest('.task').dataset.taskId);
             deleteTask(taskId);
+        }
+        if (e.target.classList.contains('move-to')) {
+            const taskId = parseInt(e.target.closest('.task').dataset.taskId);
+            const newStatus = e.target.dataset.moveTo;
+            updateTask(taskId, { status: newStatus });
         }
     });
 
